@@ -1,0 +1,201 @@
+% Elaborado por Dr. José Alejandro Abur
+% Dudas o comentarios a rsgenus1.math@gmail.com
+%% 
+% EDITAR EL NOMBRE DE LA EVALUACION AQUI
+\newcommand{\evaluation}{Tarea 1}
+\documentclass[11pt,letter]{amsart}
+\usepackage[utf8]{inputenc} % tildes
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{float}
+\usepackage{multicol}
+\usepackage{fancyhdr} % Encabezados y pie de página
+\usepackage[spanish]{babel}
+\usepackage{listings} % comandos MATLAB O C
+\usepackage{multirow}
+\usepackage[left=2cm,right=2cm,top=4.5cm,bottom=2.5cm, headsep=3cm]{geometry}
+\usepackage[usenames]{color}
+\usepackage{wrapfig} %% figuras con texto
+\usepackage{multirow} % para las tablas
+\usepackage{graphicx}
+\usepackage{subfigure} % subfiguras
+\usepackage{epstopdf} % archivos eps
+\usepackage{lipsum}
+\usepackage{caption}
+\usepackage{hyperref}
+\usepackage{esint}
+\usepackage{tikz, tkz-euclide}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usetikzlibrary[calc,arrows,decorations.pathmorphing,backgrounds,positioning,fit,petri,shapes,mindmap,shadows]
+\usepackage{latexsym}
+\usepackage[all]{xy}
+\usepackage{enumitem}
+\usepackage{pgfplots}
+\usepgfplotslibrary{statistics}
+\usepackage{pgf-pie}
+
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+\usepackage{colortbl}
+\usepackage{lmodern}  %% fuentes latin modern
+\usepackage{tabularx}
+\usepackage{array}
+
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+\tcbset{tab2/.style={enhanced,fonttitle=\bfseries,fontupper=\normalsize\sffamily,
+colback=white!10!white,colframe=blackUA!40,colbacktitle=blackUA!55!black!30,
+coltitle=black,center title}}
+
+\usepackage{xcolor}
+
+\definecolor{blackUA}{RGB}{27, 68, 59}
+\definecolor{pastelYellow}{RGB}{255, 229, 153}
+
+\definecolor{grayUA}{RGB}{218, 218, 218}
+\definecolor{redUA}{RGB}{218, 41, 28}
+\definecolor{blackUA}{RGB}{61, 57, 53}
+\definecolor{lighredUA}{RGB}{214, 173, 174}
+\definecolor{blueUA}{RGB}{39, 52, 115}
+
+\newcommand{\rvline}{\hspace*{-\arraycolsep}\vline\hspace*{-\arraycolsep}} %%for vert div of matrices
+
+\newcommand{\set}[1]{\left\lbrace #1 \right\rbrace}
+
+\newcommand{\bm}[1]{\mbox{\boldmath$#1$}}
+\newcommand{\puntaje}[1]{{\color{redUA} (#1 puntos)}}
+
+\fancyhead[LO,RE]{\includegraphics[scale=.15]{logo-UA.png}}
+\fancyhead[RO,LE]{\color{blackUA}{Departamento de Matemáticas}}
+\fancyfoot{}
+\fancyfoot[LO,RE]{\textcolor{blackUA}{\thepage}}
+%\fancyfoot[RO,LE]{\textcolor{grayUA}{\evaluation}}
+\fancyfoot[RO,LE]{\textcolor{grayUA}{\footnotesize Vicerrectoría Académica - Dirección de Docencia de Pregrado - Subdirección de Evaluación y Eficacia del Aprendizaje}}
+
+\pagestyle{fancy}
+
+\newcounter{question}
+
+\newcommand{\question}[2]{
+    \stepcounter{question}
+    \begin{tcolorbox}[
+        colback=blackUA!1, % Fondo claro
+        colframe=grayUA, %
+        title=Información del estudiante,
+        fonttitle=\bfseries,
+        coltitle=black, % Color del título
+        boxrule=0.5mm, % Grosor del borde
+        width=1\textwidth, % Ancho de la caja
+        left=5mm, % Espacio a la izquierda
+        right=5mm,
+        title=Pregunta \thequestion \hfill \color{blackUA}#1]% Espacio a la derecha]
+    #2
+    
+    
+    \end{tcolorbox}
+}
+
+\theoremstyle{definition}
+\newtheorem{thm}{Teorema}
+\newtheorem{defn}[thm]{Definición}
+\newtheorem{lem}{Lema}[thm]
+\newtheorem{cor}{Corolario}[thm]
+\newtheorem{prop}{Proposición}[thm]
+\newtheorem{obs}{Observación}[thm]
+\newtheorem{ill}{Ilustración}[thm]
+\newtheorem{prb}{Problema}
+\renewcommand{\thesection}{\Roman{section}}
+
+\usepackage{hyperref}
+
+\makeatletter%
+  \hypersetup{%
+    pdfinfo={%
+    %Title={\@title},%
+    %Author={\@author},%
+    %Subject={subject},%
+    %Producer={pdfTeX},%
+    %Creator={\@author},%
+    Keywords={},%    
+    },%
+}
+\makeatother%
+
+
+\begin{document}
+\begin{minipage}{0.75\textwidth}
+\begin{flushleft}
+{\huge\textbf \evaluation} \\
+{\color{blackUA}\large Biomatemáticas}\\
+{\color{blackUA} Departamento de Matemáticas}
+\end{flushleft}
+\end{minipage}
+%\hfill 
+\begin{minipage}{0.2\textwidth}
+\includegraphics[scale=.2]{logo-UA.png}
+\end{minipage}
+\vspace*{0.75cm}
+\begin{tcolorbox}[
+    colback=blackUA!2, % Fondo claro
+    colframe=redUA, %
+    title=Información del grupo de estudiantes,
+    fonttitle=\bfseries,
+    %coltitle=black, % Color del título
+    boxrule=0.5mm, % Grosor del borde
+    width=1\textwidth, % Ancho de la caja
+    left=5mm, % Espacio a la izquierda
+    right=5mm ]% Espacio a la derecha]
+    \vspace*{3mm}
+    \textbf{Integrante 1:} \hrulefill RUT: \hrulefill \\[5mm] % Espacio para el nombre
+    \vspace*{0.2cm}
+    \textbf{Integrante 2:} \hrulefill RUT: \hrulefill \\[5mm] % Espacio para el nombre
+    \vspace*{0.2cm}
+    \textbf{Integrante 3:} \hrulefill RUT: \hrulefill\\[5mm]
+    \vspace*{0.2cm}
+    \textbf{Integrante 4:} \hrulefill RUT: \hrulefill
+  \end{tcolorbox}
+
+%    \item Resuelve problemas de forma literal, evaluando las soluciones posibles ante problemas con planteamiento y transformando un problema textual en una ecuación o inecuación según corresponda.
+%  \end{itemize}
+%\end{tcolorbox}
+%
+\begin{tcolorbox}[colback=blackUA!2, colframe=redUA, title=Instrucciones Generales]
+  \begin{itemize}
+      \item Se debe hacer con un mínimo de 2 integrantes y un máximo de 4 integrantes.
+        %\item La entrega debe ser digital en la plataforma canvas. Si es escaneado, deben asegurar que sea legible.
+        \item La entrega debe ser presencial.
+        \item No se aceptan tareas fuera de plazo.
+  \end{itemize}
+\end{tcolorbox}
+\vfill
+ \begin{tcolorbox}[
+        tab2,
+        colback=blackUA!1,
+        colframe=blackUA,
+        tabularx*={
+            \renewcommand{\arraystretch}{1.5}}{Y|Y|Y|Y},
+            title={Revisión de la Prueba},
+            boxrule=0.8pt
+        ]
+    \textbf{Nota}   & \textbf{Puntaje Obtenido}    & \textbf{Fecha de Revisión}     & \textbf{Firma del Estudiante}      \\ \hline
+                                &  &  &  \\
+                                &  &  & 
+    \end{tcolorbox}
+
+\newpage
+
+%% Por si la tarea requiere alguna contextualizacion
+%\begin{tcolorbox}[colback=blackUA!2, colframe=blackUA, title=Contexto]
+%\end{tcolorbox}
+\vspace{0.8cm}
+
+\question{}{
+}
+\question{}{
+}
+\question{}{
+}
+\end{document}
