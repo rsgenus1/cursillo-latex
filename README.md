@@ -7,13 +7,13 @@ Después de cada sesión habrán tareas sencillas, para la elaboración de conte
 
 ---
 
-## 🎯 Objetivo del curso
+## Objetivo del curso
 
 Enseñar los fundamentos de LaTeX suficientes para que los participantes puedan escribir exámenes, controles, tareas, talleres y documentos académicos con calidad profesional en poco tiempo.
 
 ---
 
-## 📅 Estructura del curso
+## Estructura del curso
 
 ### **Sesión 1: Introducción y bases**
 
@@ -62,11 +62,11 @@ Enseñar los fundamentos de LaTeX suficientes para que los participantes puedan 
 
 ---
 
-## 📁 Estructura del repositorio
+## Estructura del repositorio
 
- ## TODO 
+ ## FALTA DETALLE CON TREE
 
-# 🛠 Requisitos
+# Requisitos
 
 - **Windows**: MiKTeX + TeXstudio (recomendado)
 - **macOS**: MacTeX + TeXstudio o TeXShop
@@ -74,7 +74,7 @@ Enseñar los fundamentos de LaTeX suficientes para que los participantes puedan 
 
 ---
 
-## 🚀 Cómo usar las plantillas
+## Cómo usar las plantillas
 
 1. Copia la plantilla correspondiente
 2. Cambia los datos en el preámbulo (nombre, asignatura, fecha, etc.)
@@ -83,21 +83,21 @@ Enseñar los fundamentos de LaTeX suficientes para que los participantes puedan 
 
 ---
 
-## 👥 Público objetivo
+## Público objetivo
 
 - Estudiantes universitarios
 - Profesores que quieran mejorar la presentación de sus materiales
 
 ---
 
-## 📝 Autor
+## Autor
 
 **José Alejandro Aburto, PhD**  
 Creado para el cursillo de LaTeX 2026
 
 ---
 
-## 📄 Licencia
+## Licencia
 
 Este material es de uso libre para fines educativos. Se agradece la mención al autor si se reutiliza o modifica.
 
