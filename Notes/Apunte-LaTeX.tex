@@ -1,0 +1,67 @@
+\documentclass[graybox,envcountchap,sectrefs]{svmono}
+
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amsfonts, amssymb}
+\usepackage{minted}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\tcbuselibrary{minted}
+\definecolor{latteBase}{HTML}{EFF1F5}
+\newtcblisting{code}{
+    listing engine=minted,
+    minted language=latex,
+   % minted options={fontsize=\small},
+    colback=latteBase,
+    %colback=black!20,
+    colframe=black!5,
+    boxrule=0.5pt,
+    left=5mm,
+    listing only
+}
+
+\begin{document}
+
+\author{José Alejandro Aburto}
+\title{Cursillo \LaTeX}
+\subtitle{Una introducción enfoncada en docencia en matemáticas}
+\maketitle
+
+\chapter*{Introducción}
+
+\chapter{Estructura de un documento \LaTeX}
+Un documento \LaTeX tiene la extensión \textbf{.tex}
+y se compone de dos partes:
+    \begin{enumerate}
+        \item El preámbulo.
+        \item El cuerpo.
+    \end{enumerate}
+    En el preámbulo indicamos el tipo de documento que estamos realizando. Por ejemplo, en las plantillas
+    que utilizaremos usamos la clase \emph{amsart} que el formato para artículo de la AMS (American Mathematical Society).
+    El código que indica esto es el siguiente:
+        \begin{code}
+            \documentclass{amsart}
+        \end{code}
+        También podemos agregar información como
+
+\chapter{Ecuaciones}
+\section{Ecuaciones más usadas}
+\section{Matrices}
+\section{Tablas}
+\section{Arreglos y casos}
+
+\chapter{Itemizaciones, Enumeraciones y Gráficos}
+\section{Itemize}
+\section{Enumerate}
+\section{includegraphics}
+
+\chapter{TikZ*}
+\section{Gráfico de Funciones}
+\section{tkz-euclide}
+
+%agrega de bibliografia la documentacion de:
+% tikz, tkz-euclide, latex, y de la libreria de tikz con la que se hacen los graficos
+% % ojo que puede que necesite de --shell-scape para este ultimo capitulo. 
+% Probablemente sea mejor dejarlo como opcional o removerlo
+\end{document}
+
