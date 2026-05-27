@@ -6,18 +6,33 @@
 \usepackage{minted}
 \usepackage{xcolor}
 \usepackage{tcolorbox}
-\tcbuselibrary{minted}
+\tcbuselibrary{skins, minted, raster}
 \definecolor{latteBase}{HTML}{EFF1F5}
+
+\renewcommand{\exercisename}{Ejercicio}
+
+\newcounter{codigo}[chapter]
+\renewcommand{\thecodigo}{\thechapter.\arabic{codigo}}
+
 \newtcblisting{code}{
     listing engine=minted,
     minted language=latex,
-   % minted options={fontsize=\small},
     colback=latteBase,
-    %colback=black!20,
     colframe=black!5,
     boxrule=0.5pt,
     left=5mm,
-    listing only
+    listing only,
+    before upper={\stepcounter{codigo}\textcolor{black!40}{\small Código ejemplo \thecodigo}\par\smallskip}
+}
+
+% Caja de resultado (admite contenido LaTeX compilado)
+\newtcolorbox{compiled}{
+    colback=white,
+    colframe=black!15,
+    boxrule=0.5pt,
+    left=5mm,
+    title={\textcolor{blue!60}{\small Código compilado}}, % este color esta feo
+    fonttitle=\small
 }
 
 \begin{document}
@@ -26,7 +41,7 @@
 \title{Cursillo \LaTeX}
 \subtitle{Una introducción enfoncada en docencia en matemáticas}
 \maketitle
-
+\tableofcontents
 \chapter*{Introducción}
 
 \chapter{Estructura de un documento \LaTeX}
@@ -45,7 +60,158 @@ y se compone de dos partes:
         También podemos agregar información como
 
 \chapter{Ecuaciones}
-\section{Ecuaciones más usadas}
+    En este capítulo describiremos las ecuaciones más usadas.
+\section{Ecuaciones}
+    Para escribir una ecuación debemos indicarle al compilador de que entraremos en modo matemático, conocido como 
+    \emph{math mode}. Hay varias maneras de hacerlo, pero todas tienen un propósito diferente.
+    \subsection{Display Math Mode}
+    Si queremos una ecuación centrada en el texto encerraremos el código matemático entre \verb|\[| {\color{red} código }\verb|\]| así como se muestra en el siguiente ejemplo:
+        \begin{code}
+            \[ x + 12 = 10 \]
+        \end{code}
+        Esto resultará en:
+        \begin{compiled}
+            \[x + 12 = 10\]
+        \end{compiled}
+    Es usual encontrarse con un entorno que se comporta de manera similar para el mismo propósito
+    pero es heredado de \TeX, y nosotros queremos usar la versión moderna que es \LaTeX. Aquí un ejemplo de su uso:
+        \begin{code}
+            $$ x + 12 = 10 $$
+        \end{code}
+    El problema es que para edición profesional, puede generar resultados indeseados en el espaciado del texto.
+    \begin{exercise}
+        Escriba la ecuación \(xy = x - y\) usando Display Math Mode.
+    \end{exercise}
+
+    \subsection{Inline Math Mode}
+    Cuando queremos que la ecuación esté en la misma línea que el texto utilizamos el modo \emph{Inlay Math Mode}.
+    A diferencia del Display Math Mode que utiliza paréntesis cuadrados, aquí usaremos paréntesis redondos como se muestra en el código ejemplo siguiente:
+    \begin{code}
+        La ecuación de la energía es \(E=mc^2\).
+    \end{code}
+    Lo que resulta en: 
+
+    \begin{compiled}
+    La ecuación de la energía es \(E=mc^2\).
+    \end{compiled}
+    De manera similar a Display Math Mode, existe el sintáxis usado por \TeX, en tal caso, lo anterior se escribe como sigue:
+    \begin{code}
+        La ecuación de la energía es $E=mc^2$.
+    \end{code}
+    \begin{exercise}
+        Escriba la descripción de un problema matemático sencillo con ecuaciones en el texto. Por ejemplo:
+
+        En la fábrica de textiles se han elaborado \(C=500\) camisas y \(P=600\) poleras el día de ayer.
+    \end{exercise}
+    \subsection{Texto dentro del modo matemático}
+        En ocasiones será necesario agregar texto, para ello simplemente usaremos el entorno \textbf{text}
+        o para casos especiales como en nombres largos de funciones \textbf{mbox}.
+
+        Para poner un contexto más general usaremos código ejemplo que podríamos no comprender en este punto del curso.
+        \begin{itemize}
+            \item Uso de \textbf{text}
+                \begin{code}
+                    \[T(x) = R(x) \text{ cuando } x>0.\]
+                \end{code}
+                \begin{compiled}
+                    \[T(x) = R(x) \text{ cuando } x>0.\]
+                \end{compiled}
+            \item Uso en un caso más complejo de \textbf{text}
+    \begin{code}
+        \[ f(x) = \begin {cases}
+                    x & \text{si } x>0 \\
+                0 & \text{si } x\leq 0 \end{cases}\]
+
+    \end{code}
+    \begin{compiled}
+        \[ f(x) = \begin {cases}
+                    x & \text{si } x>0 \\
+                0 & \text{si } x\leq 0 \end{cases}\]
+    \end{compiled}
+            \item Uso de \textbf{mbox}
+                \begin{code}
+                    Consideremos \(G=\mbox{Tor}(M)\).
+                \end{code}
+                \begin{compiled}
+                    Consideremos \(G=\mbox{Tor}(M)\).
+                \end{compiled}
+        \end{itemize}
+    \subsection{Subíndices y superíndices}
+       Ya que sabemos como usar el modo matemático, ahora veamos cómo poner subíndices, superíndices y acentos.
+       Son relativamente sencillos y nuestro editor puede ayudarnos a encontrarlos con facilidad. Veamos los siguientes ejemplos:
+    \begin{itemize}
+        \item Subíndices.
+    \begin{tcbraster}[raster columns=2, raster equal height]
+    \begin{code}
+        \[ a_j, x_3, x_4 \]
+    \end{code}
+    \begin{compiled}
+        \[ a_j, x_3, x_4 \]
+    \end{compiled}
+    \end{tcbraster}
+    Si deseamos subíndices más complejos, debemos encerrar todo el subíndice en paréntesis de llaves:
+    \begin{tcbraster}[raster columns=2, raster equal height]
+    \begin{code}
+        \[ a_{i,j}\]
+    \end{code}
+    \begin{compiled}
+        \[ a_{i,j}\]
+    \end{compiled}
+    \end{tcbraster}
+
+    Otro ejemplo:
+    \begin{tcbraster}[raster columns=2, raster equal height]
+    \begin{code}
+        \[ X_{\text{inicial}} \]
+    \end{code}
+    \begin{compiled}
+        \[ X_{\text{inicial}} \]
+    \end{compiled}
+    \end{tcbraster}
+
+\item Superíndices
+    Los superíndices funcionan de manera similar a los subíndices:
+    \begin{tcbraster}[raster columns=2, raster equal height]
+    \begin{code}
+        \[ a^j, x^3, x^4 \]
+    \end{code}
+    \begin{compiled}
+        \[ a^j, x^3, x^4 \]
+    \end{compiled}
+    \end{tcbraster}
+
+    Y para exponentes más complejos:
+    \begin{tcbraster}[raster columns=2, raster equal height]
+    \begin{code}
+        \[ e^{-st} \]
+    \end{code}
+    \begin{compiled}
+        \[ e^{-st} \]
+    \end{compiled}
+    \end{tcbraster}
+
+
+    \end{itemize}
+
+    \subsection{Operaciones}
+    Ahora veamos operaciones usuales.
+
+    La operaciones algebraicas usuales las podemos mostrar rápidamente. Estudiemos los siguientes ejemplos:
+    \begin{itemize}
+        \item Suma y resta
+    \begin{tcbraster}[raster columns=2, raster equal height]
+    \begin{code}
+        \[ x + 8 = y - 4 \]
+    \end{code}
+    \begin{compiled}
+        \[ x + 8 = y - 4 \]
+    \end{compiled}
+\end{tcbraster}
+    \item Producto punto y cruz
+    \end{itemize}
+
+    \subsection{Operadores}
+    \subsection{Conjuntos}
 \section{Matrices}
 \section{Tablas}
 \section{Arreglos y casos}
@@ -57,10 +223,9 @@ y se compone de dos partes:
 
 \chapter{TikZ*}
 \section{Gráfico de Funciones}
-\section{tkz-euclide}
 
 %agrega de bibliografia la documentacion de:
-% tikz, tkz-euclide, latex, y de la libreria de tikz con la que se hacen los graficos
+% tikz, latex, y de la libreria de tikz con la que se hacen los graficos
 % % ojo que puede que necesite de --shell-scape para este ultimo capitulo. 
 % Probablemente sea mejor dejarlo como opcional o removerlo
 \end{document}
