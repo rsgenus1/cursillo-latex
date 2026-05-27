@@ -13,7 +13,10 @@
 *.nav
 *.snm
 *.vrb
-
+*.listing
+*(busy)
+*.minted
+_minted
 # Temp
 *~
 .DS_Store
