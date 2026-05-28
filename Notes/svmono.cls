@@ -1,26 +1,6 @@
-% SVMONO DOCUMENT CLASS -- version 5.5 (17-Dec-09)
-% Springer Verlag global LaTeX2e support for monographs
-%%
-%%
-%% \CharacterTable
-%%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
-%%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
-%%   Digits        \0\1\2\3\4\5\6\7\8\9
-%%   Exclamation   \!     Double quote  \"     Hash (number) \#
-%%   Dollar        \$     Percent       \%     Ampersand     \&
-%%   Acute accent  \'     Left paren    \(     Right paren   \)
-%%   Asterisk      \*     Plus          \+     Comma         \,
-%%   Minus         \-     Point         \.     Solidus       \/
-%%   Colon         \:     Semicolon     \;     Less than     \<
-%%   Equals        \=     Greater than  \>     Question mark \?
-%%   Commercial at \@     Left bracket  \[     Backslash     \\
-%%   Right bracket \]     Circumflex    \^     Underscore    \_
-%%   Grave accent  \`     Left brace    \{     Vertical bar  \|
-%%   Right brace   \}     Tilde         \~}
-%%
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesClass{svmono}[2009/12/17 v5.5
-^^JSpringer Verlag global LaTeX document class for monographs]
+]
 %
 % Options
 % citations
@@ -243,7 +223,7 @@ passing it to article class \MessageBreak
 \parindent\svparindent
 \setlength{\parskip}{\z@ \@plus \p@}
 \setlength{\hfuzz}{2\p@}
-\setlength{\arraycolsep}{1.5\p@}
+\setlength{\arraycolsep}{2.0\p@}
 
 \frenchspacing
 
@@ -1189,8 +1169,8 @@ to\z@{\kern0.55\wd0\vrule\@height0.45\ht0\hss}\box0}}}}
         \advance\itemsep by -\parsep
         \partopsep=\topsep}
 
-\setlength\arraycolsep{1.5\p@}
-\setlength\tabcolsep{1.5\p@}
+\setlength\arraycolsep{1.7\p@}
+\setlength\tabcolsep{1.7\p@}
 
 \def\tableofcontents{\@restonecolfalse\if@twocolumn\@restonecoltrue\onecolumn
  \fi\chapter*{\contentsname \@mkboth{{\contentsname}}{{\contentsname}}}

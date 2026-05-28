@@ -8,6 +8,7 @@
 \usepackage{tcolorbox}
 \tcbuselibrary{skins, minted, raster}
 \definecolor{latteBase}{HTML}{EFF1F5}
+\usepackage{hyperref}
 
 \renewcommand{\exercisename}{Ejercicio}
 
@@ -193,6 +194,82 @@ y se compone de dos partes:
 
     \end{itemize}
 
+\subsection{Acentos y símbolos}
+    Los acentos agregan decoraciones sobre letras o símbolos, el ejemplo más usual es el de la flecha de los vectores.
+    Aquí veremos varios de los acentos más usados. En general, el editor nos ayudará a generar esto de manera sencilla.
+    \begin{tcbraster}[raster columns=2, raster equal height]
+    \begin{code}
+        \[ \vec{v} \]
+    \end{code}
+    \begin{compiled}
+        \[ \vec{v} \]
+    \end{compiled}
+    \end{tcbraster}
+
+
+    \begin{tcbraster}[raster columns=2, raster equal height]
+    \begin{code}
+        \[ \bar{v} \]
+    \end{code}
+    \begin{compiled}
+        \[ \bar{v} \]
+    \end{compiled}
+    \end{tcbraster}
+
+
+    \begin{tcbraster}[raster columns=2, raster equal height]
+    \begin{code}
+        \[ \hat{v} \]
+    \end{code}
+    \begin{compiled}
+        \[ \hat{v} \]
+    \end{compiled}
+    \end{tcbraster}
+
+    \begin{tcbraster}[raster columns=2, raster equal height]
+    \begin{code}
+        \[ \tilde{v} \]
+    \end{code}
+    \begin{compiled}
+        \[ \tilde{v} \]
+    \end{compiled}
+
+\subsection{Letras Griegas}
+    \end{tcbraster}
+    Entre los símbolos, tenemos las letras griegas, listamos las más usadas:
+
+    \begin{code}\[
+        \alpha \beta \gamma \delta \epsilon \varepsilon \zeta \eta \theta \vartheta \iota \kappa \lambda \mu \nu \xi \pi \rho \sigma \tau \upsilon \phi \varphi \chi \psi \omega
+    \]
+    \end{code}
+
+    \begin{compiled}
+        \[
+        \alpha \beta \gamma \delta \epsilon \varepsilon \zeta \eta \theta \vartheta \iota \kappa \lambda \mu \nu \xi \pi \rho \sigma \tau \upsilon \phi \varphi \chi \psi \omega
+    \]
+    \end{compiled}
+    Vale la pena usar la ayuda del editor al comienzo, y memorizar las que uno utilice más seguido con el pasar del tiempo.
+    También tenemos algunas de las mayúsculas:
+    \begin{code}
+        \[\Gamma \Delta \Theta \Lambda \Pi \Sigma \Phi \Psi \Omega\]
+    \end{code}
+    \begin{compiled}
+        \[\Gamma \Delta \Theta \Lambda \Pi \Sigma \Phi \Psi \Omega\]
+    \end{compiled}
+
+    También incluímos los más usados en general:
+    \begin{code}\[
+        \infty \partial \nabla \times \cdot \approx \equiv \neq \leq \geq
+    \]
+    \end{code}
+    \begin{compiled}
+        \[
+        \infty \partial \nabla \times \cdot \approx \equiv \neq \leq \geq
+    \]
+    \end{compiled}
+
+    Dejaremos una tabla resumen de estos símbolos para poder consultar rápidamente. %!TODO
+
     \subsection{Operaciones}
     Ahora veamos operaciones usuales.
 
@@ -207,14 +284,185 @@ y se compone de dos partes:
         \[ x + 8 = y - 4 \]
     \end{compiled}
 \end{tcbraster}
+
+    \item Fracciones
     \item Producto punto y cruz
     \end{itemize}
 
     \subsection{Operadores}
+        Tenemos algunos operadores que solemos usar con frecuencia, como integrales simples, dobles, etc. o sumatorias, 
+        derivadas, y más. Veremos con detalle la integral y después enumeraremos los demás operadores que son semejantes en uso.
+
+
+        Para la integral usaremos el comando \emph{\textbackslash int}
+
+        \begin{code}
+            \[\int_0^5 e^{3x}dx\]
+        \end{code}
+        \begin{compiled}
+            \[\int_0^5 e^{3x}dx\]
+        \end{compiled}
+
+        Recordemos que es una buena práctica encerrar en paréntesis de llaves los suíndices y superíndices. Y resulta necesario cuando
+        los subíndices o superíndices son más largos que solo un carácter.
+        \begin{code}
+            \[\int_{3\pi}^{e^2} \cos(x)dx\]
+        \end{code}
+        \begin{compiled}
+            \[\int_{3\pi}^{e^2} \cos(x)dx\]
+        \end{compiled}
+
+        Para otros tipos de integrales, utilizamos comandos semenajes, como se observa en los siguientes ejemplos:
+
+
+\begin{tcbraster}[raster columns=2, raster equal height]
+        \begin{code}
+            \[\iint_{\mathcal{R}} f(x,y)dA\]
+        \end{code}
+        \begin{compiled}
+        \[\iint_{\mathcal{R}}f(x,y)dA\]
+        \end{compiled}
+    \end{tcbraster}
+
+\begin{tcbraster}[raster columns=2, raster equal height]
+        \begin{code}
+            \[\oint_{\gamma} F(z)\cdot dz\]
+        \end{code}
+        \begin{compiled}
+            \[\oint_{\gamma} F(z)\cdot dz\]
+        \end{compiled}
+    \end{tcbraster}
+
+        Para sumas, se sigue el mismo patrón pero con \emph{\textbackslash sum}. Veamos algunos ejemplos:
+\begin{tcbraster}[raster columns=2, raster equal height]
+    \begin{code}
+        \[ \sum_{j=1}^{100} j^2\]
+    \end{code}
+    \begin{compiled}
+        \[ \sum_{j=1}^{100} j^2\]
+    \end{compiled}
+    \end{tcbraster}
+\begin{tcbraster}[raster columns=2, raster equal height]
+    \begin{code}
+        \[ \sum_{1\leq j \leq 14} \sum_{1\leq k \leq 10} k\log(j) \]
+    \end{code}
+    \begin{compiled}
+        \[ \sum_{j=-5}^{7} \sum_{k=2}^{12} k\log(j) \]
+    \end{compiled}
+    \end{tcbraster}
+
+
+
     \subsection{Conjuntos}
-\section{Matrices}
-\section{Tablas}
 \section{Arreglos y casos}
+\section{Matrices}
+Para escribir una matriz utilizaremos diferentes entornos dependiendo del resultado deseado.
+Comenzaremos con la matriz usual con paréntesis redondos. Usaremos el entorno \textbf{pmatrix} que es provisto por el paquete \emph{amsmath}
+como sigue:
+\begin{code}
+    \[
+    \begin{pmatrix}
+        4   &   10  \\
+        -12 &   0
+    \end{pmatrix}\]
+\end{code}
+\begin{compiled}
+    \[
+    \begin{pmatrix}
+        4   &   10  \\
+        -12 &   0
+    \end{pmatrix}\]
+\end{compiled}
+Para separar una columna de otra, utilizamos el símbolo \& al igual que en arrelos y casos.
+Y para cambiar de fila, utilizaremos el salto de linea \textbackslash\textbackslash.
+
+Por otro lado, si deseamos usar paréntesis cuadrados, usamos:
+
+\begin{code}
+    \[
+        \begin{bmatrix}
+            a_{11} &   a_{12} & a_{13}   \\
+            a_{21} &   a_{22} & a_{23} 
+        \end{bmatrix}
+    \]
+\end{code}
+\begin{compiled}
+    \[
+        \begin{bmatrix}
+            a_{11} &   a_{12} & a_{13}   \\
+            a_{21} &   a_{22} & a_{23} 
+        \end{bmatrix}
+    \]
+\end{compiled}
+
+Para el paréntesis vertical, como el que usamos para el determinante, usamos:
+\begin{code}
+    \[
+        \begin{vmatrix}
+            2   &   0   &   -1 \\
+            0   &   4   &   1   \\
+            1   &   1   &   0
+        \end{vmatrix}
+    \]
+\end{code}
+\begin{compiled}
+    \[
+        \begin{vmatrix}
+            2   &   0   &   1 \\
+            0   &   4   &   1   \\
+            1   &   1   &   0
+        \end{vmatrix}
+    \]
+\end{compiled}
+Es posible que necesitemos mucho mayor control a la hora de escribir matrices, por el ejemplo cuando hacemos matrices ampliadas.
+En ese caso, la solución más limpia es cambiar de entorno a \emph{array}. Nos proporcionará mayor control pero por el mismo motivo tendremos que escribir mayor detalle:
+
+
+Primero, debemos indicar el tipo de paréntesis, y además, la cantidad de columnas a utilizar. Por ejemplo
+\begin{code}
+    \[
+        \left(
+            \begin{array}{cc}
+                -5   &   6 \\
+                -1  & 40
+            \end{array}
+        \right)
+    \]
+\end{code}
+
+\begin{compiled}
+    \[
+        \left(
+            \begin{array}{cc}
+                -5   &   6 \\
+                -1  & 40
+            \end{array}
+        \right)
+    \]
+\end{compiled}
+Y para agregar la linea vertical requerida en matrices ampliadas, lo indicamos en las opciones de \emph{array}:
+\begin{code}
+    \[
+        \left[
+            \begin{array}{cc|c}
+                7   &   6  &     4\\
+                1  & 9      &   3
+            \end{array}
+        \right]
+    \]
+\end{code}
+\begin{compiled}
+    \[
+        \left[
+            \begin{array}{cc|c}
+                7   &   6  &     4\\
+                1  & 9      &   3
+            \end{array}
+        \right]
+    \]
+\end{compiled}
+
+\section{Tablas}
 
 \chapter{Itemizaciones, Enumeraciones y Gráficos}
 \section{Itemize}
