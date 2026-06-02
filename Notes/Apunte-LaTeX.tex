@@ -45,7 +45,9 @@
 \tableofcontents
 \chapter*{Introducción}
 
-\chapter{Estructura de un documento \LaTeX}
+\chapter{Fundamentos y Estructura}
+\section{Instalación y Editor}
+\section{Estructura de un documento \LaTeX}
 Un documento \LaTeX tiene la extensión \textbf{.tex}
 y se compone de dos partes:
     \begin{enumerate}
@@ -60,9 +62,8 @@ y se compone de dos partes:
         \end{code}
         También podemos agregar información como
 
-\chapter{Ecuaciones}
-    En este capítulo describiremos las ecuaciones más usadas.
-\section{Ecuaciones}
+\section{Paquetes esenciales}       
+\section{Modo Matemático}
     Para escribir una ecuación debemos indicarle al compilador de que entraremos en modo matemático, conocido como 
     \emph{math mode}. Hay varias maneras de hacerlo, pero todas tienen un propósito diferente.
     \subsection{Display Math Mode}
@@ -137,7 +138,10 @@ y se compone de dos partes:
                     Consideremos \(G=\mbox{Tor}(M)\).
                 \end{compiled}
         \end{itemize}
-    \subsection{Subíndices y superíndices}
+ 
+\chapter{Ecuaciones}
+    En este capítulo describiremos las ecuaciones más usadas.
+   \section{Subíndices y superíndices}
        Ya que sabemos como usar el modo matemático, ahora veamos cómo poner subíndices, superíndices y acentos.
        Son relativamente sencillos y nuestro editor puede ayudarnos a encontrarlos con facilidad. Veamos los siguientes ejemplos:
     \begin{itemize}
@@ -194,7 +198,7 @@ y se compone de dos partes:
 
     \end{itemize}
 
-\subsection{Acentos y símbolos}
+    \section{Acentos}
     Los acentos agregan decoraciones sobre letras o símbolos, el ejemplo más usual es el de la flecha de los vectores.
     Aquí veremos varios de los acentos más usados. En general, el editor nos ayudará a generar esto de manera sencilla.
     \begin{tcbraster}[raster columns=2, raster equal height]
@@ -234,7 +238,7 @@ y se compone de dos partes:
         \[ \tilde{v} \]
     \end{compiled}
 
-\subsection{Letras Griegas}
+    \section{Letras griegas y símbolos comunes}
     \end{tcbraster}
     Entre los símbolos, tenemos las letras griegas, listamos las más usadas:
 
@@ -270,7 +274,7 @@ y se compone de dos partes:
 
     Dejaremos una tabla resumen de estos símbolos para poder consultar rápidamente. %!TODO
 
-    \subsection{Operaciones}
+    \section{Operaciones binarias}
     Ahora veamos operaciones usuales.
 
     La operaciones algebraicas usuales las podemos mostrar rápidamente. Estudiemos los siguientes ejemplos:
@@ -285,15 +289,51 @@ y se compone de dos partes:
     \end{compiled}
 \end{tcbraster}
 
-    \item Fracciones
     \item Producto punto y cruz
+    \begin{tcbraster}[raster columns=2, raster equal height]
+    \begin{code}
+        \[ \lambda \cdot \vec{v} = \vec{w} \]
+    \end{code}
+    \begin{compiled}
+        \[ \lambda \cdot \vec{v} = \vec{w} \]
+    \end{compiled}
+\end{tcbraster}
+
+    \begin{tcbraster}[raster columns=2, raster equal height]
+    \begin{code}
+        \[ (1,0,-1)\times (0,1,1) = (1,-1,1) \]
+    \end{code}
+    \begin{compiled}
+        \[ (1,0,-1)\times (0,1,1) = (1,-1,1) \]
+    \end{compiled}
+\end{tcbraster}
+
+    \item Fracciones
+ \begin{tcbraster}[raster columns=2, raster equal height]
+    \begin{code}
+        \[ \frac{x^2 + 3}{x^-1}\]
+    \end{code}
+    \begin{compiled}
+        \[ \frac{x^2 + 3}{x-1}\]
+    \end{compiled}
+\end{tcbraster}
+
+ \begin{tcbraster}[raster columns=2, raster equal height]
+    \begin{code}
+        \[\frac{1}{1+ \frac{1}{2} }\]
+    \end{code}
+    \begin{compiled}
+        \[ \frac{1}{1+\frac{1}{2}} \]
+    \end{compiled}
+\end{tcbraster}
     \end{itemize}
 
-    \subsection{Operadores}
+
+    \section{Operadores}
         Tenemos algunos operadores que solemos usar con frecuencia, como integrales simples, dobles, etc. o sumatorias, 
         derivadas, y más. Veremos con detalle la integral y después enumeraremos los demás operadores que son semejantes en uso.
 
-
+    \subsection{Integrales y sumas}
         Para la integral usaremos el comando \emph{\textbackslash int}
 
         \begin{code}
@@ -303,7 +343,7 @@ y se compone de dos partes:
             \[\int_0^5 e^{3x}dx\]
         \end{compiled}
 
-        Recordemos que es una buena práctica encerrar en paréntesis de llaves los suíndices y superíndices. Y resulta necesario cuando
+        Recordemos que es una buena práctica encerrar en paréntesis de llaves los subíndices y superíndices. Y resulta necesario cuando
         los subíndices o superíndices son más largos que solo un carácter.
         \begin{code}
             \[\int_{3\pi}^{e^2} \cos(x)dx\]
@@ -351,14 +391,142 @@ y se compone de dos partes:
     \end{compiled}
     \end{tcbraster}
 
+    \subsection{Raíces}
+        Para raíces, tenemos la raíz cuadrada como sigue:
+\begin{tcbraster}[raster columns=2, raster equal height]
+    \begin{code}
+        \[ \sqrt{1-t} \]
+    \end{code}
+    \begin{compiled}
+        \[ \sqrt{1-t} \]
+    \end{compiled}
+    \end{tcbraster}
 
 
-    \subsection{Conjuntos}
-\section{Arreglos y casos}
+\begin{tcbraster}[raster columns=2, raster equal height]
+    \begin{code}
+        \[ \sqrt{\frac{x+3}{x^2+4}} \]
+    \end{code}
+    \begin{compiled}
+        \[ \sqrt{\frac{x+3}{x^2+4}} \]
+    \end{compiled}
+    \end{tcbraster}
+
+    En caso de requerir agregar el índice de la raíz, lo indicamos en la opción, 
+    que se indica en el paréntesis cuadrado como sigue:
+
+\begin{tcbraster}[raster columns=2, raster equal height]
+    \begin{code}
+        \[ \sqrt[3]{\frac{7}{x+6}} \]
+    \end{code}
+    \begin{compiled}
+        \[ \sqrt[3]{\frac{7}{x+6}} \]
+    \end{compiled}
+    \end{tcbraster}
+
+
+    \subsection{Límites}
+        Para escribir límites, utilizamos \emph{limit}, seguido de \emph{limits}
+        para indicar correctamente el punto límite. Por ejemplo:
+        \begin{code}
+            \[ \lim\limits_{x \to \infty} f(x) \]
+        \end{code}
+        \begin{compiled}
+            \[ \lim\limits_{x \to \infty} f(x) \]
+        \end{compiled}
+        Aquí, usamos el punto límite como subíndice después de \emph{limits}.
+        El tamaño se ajustará automáticamente en caso de que queramos poner un límite 
+        con \emph{inline math mode}:
+
+        \begin{code}
+            El límite por izquierda de \(x = a\) se denota:
+            \(\lim\limits_{x \to a^-} f(x)\) y además...
+        \end{code}
+        quedará como:
+
+        \begin{compiled}
+            El límite por izquierda de \(x = a\) se denota:
+            \(\lim\limits_{x \to a^-} f(x)\) y además...
+        \end{compiled}
+
+        Dejamos otros ejemplos, como referencia:
+        \begin{itemize}
+            \item Con punto más largo
+    \begin{code}
+        \( \lim\limits_{(x,y)\to (0,0)} F(x,y) \)
+    \end{code}
+    \begin{compiled}
+        \[ \lim\limits_{(x,y)\to (0,0)} F(x,y) \]
+    \end{compiled}
+
+        \item Límite iterado
+    \begin{code}
+        \( \lim\limits_{x\to 1}\lim\limits_{y\to -2} \rho(x,y) \)
+    \end{code}
+    \begin{compiled}
+        \[ \lim\limits_{x\to 1}\lim\limits_{y\to -2} \rho(x,y) \]
+    \end{compiled}
+    \end{itemize}
+
+    \subsection{Operadores diferenciales}
+    %% partial, laplace, etc !TODO
+    
+    \chapter{Arreglos, Casos y Matrices}
+\section{Entornos cases y align}
+\subsection{cases}
+Para definir funciones a trozos o por casos, utilizamos el entorno \emph{cases}.
+
+
+Dentro del entorno, debemos decidir cuántas columnas consideraremos, lo usual es tener dos:
+Una para la definición de la función y el otro para la condición que debe cumplir.
+Por ejemplo,
+\begin{code}
+    \[f(t) =    \begin{cases}
+                    t^3-t^2+4   & \text{si } t \geq 0 \\
+                    2t+4        & \text{si } t < 0
+                \end{cases}
+    \]
+\end{code}
+Aquí, separamos una columna de otra utilizando un \& y señalamos el cambio de fila
+utilizando \textbackslash\textbackslash. Este código resulta en:
+\begin{compiled}
+    \[f(t) =    \begin{cases}
+                    t^3-t^2+4   & \text{si } t \geq 0 \\
+                    2t+4        & \text{si } t < 0
+                \end{cases}
+    \]
+\end{compiled}
+
+Es una buena práctica utilizar espacios y tabulaciones para tener un código legible y editable con facilidad.
+
+
+Veamos otro ejemplo con más casos:
+\begin{code}
+    Considere la función \(g\) dada por:
+    \[g(t) =    \begin{cases}
+                    e^{t-1}     & \text{si } t < 1 \\
+                    1           & \text{si } 1 \leq t < 5 \\
+                    (t-6)^3+2   & \text{si } 5 \leq t
+                \end{cases}
+    \]
+\end{code}
+Esto se ve como:
+\begin{compiled}
+    Considere la función \(g\) dada por:
+    \[g(t) =    \begin{cases}
+                    e^{t-1}     & \text{si } t < 1 \\
+                    1           & \text{si } 1 \leq t < 5 \\
+                    (t-6)^3+2   & \text{si } 5 \leq t
+                \end{cases}
+            \]
+\end{compiled}
+\subsection{align} % revisar si falta array TODO
+
+
 \section{Matrices}
 Para escribir una matriz utilizaremos diferentes entornos dependiendo del resultado deseado.
 Comenzaremos con la matriz usual con paréntesis redondos. Usaremos el entorno \textbf{pmatrix} que es provisto por el paquete \emph{amsmath}
-como sigue:
+como sigue:\
 \begin{code}
     \[
     \begin{pmatrix}
@@ -464,13 +632,10 @@ Y para agregar la linea vertical requerida en matrices ampliadas, lo indicamos e
 
 \section{Tablas}
 
-\chapter{Itemizaciones, Enumeraciones y Gráficos}
+\chapter{Listas y Gráficos}
 \section{Itemize}
 \section{Enumerate}
 \section{includegraphics}
-
-\chapter{TikZ*}
-\section{Gráfico de Funciones}
 
 %agrega de bibliografia la documentacion de:
 % tikz, latex, y de la libreria de tikz con la que se hacen los graficos
