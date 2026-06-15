@@ -3,6 +3,7 @@
 \usepackage[spanish]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath, amsfonts, amssymb}
+\usepackage{enumitem}
 \usepackage{minted}
 \usepackage{xcolor}
 \usepackage{tcolorbox}
@@ -54,15 +55,52 @@ y se compone de dos partes:
         \item El preámbulo.
         \item El cuerpo.
     \end{enumerate}
-    En el preámbulo indicamos el tipo de documento que estamos realizando. Por ejemplo, en las plantillas
-    que utilizaremos usamos la clase \emph{amsart} que el formato para artículo de la AMS (American Mathematical Society).
+    En el preámbulo indicamos el tipo de documento que estamos realizando. 
+    Mientras que en el cuerpo del documento tenemos el contenido que se verá reflejado en el documento final.
+
+
+    En el preámbulo de las plantillas que utilizaremos
+    consideramos la clase \emph{amsart} que el formato para artículo de la AMS (American Mathematical Society).
     El código que indica esto es el siguiente:
         \begin{code}
             \documentclass{amsart}
         \end{code}
-        También podemos agregar información como
+        También podemos agregar información como tamaño de fuente. Hay muchas otras opciones pero no estan disponibles en amsmath,
+        que ya tiene por defecto un formato bastante conveniente para nuestro uso.
+        En este caso, queda indicado de esta manera:
+        \begin{code}
+            \documentclass[11pt]{amsart}
+        \end{code}
+        que indica que tenemos tamaño de letra de 11 puntos.
 
 \section{Paquetes esenciales}       
+    En las plantillas no modificaremos los paquetes en el preámbulo, pero vale la pena tener aquí una referencia
+    para uso futuro.
+    \begin{enumerate}[label=\roman*.]
+        \item \emph{amsmath}, \emph{amsfonts}, \emph{amssymb}, \emph{amsthm}: Son los paquetes esenciales de la AMS,
+            incluye los modos de alineado de ecuaciones, letras y símbolos como \(\mathbb{R}\), \(\pi\), etc.
+            y los entornos para teoremas, definiciones, etc.
+        \item \emph{mathtools} extiende amsmath con matrices, flechas, etc.
+        \item \emph{float} Permite controlar la ubicación de las figuras o tablas con la opción \textbf{H}.
+        \item \emph{multicol} Permite hacer multicolumnas en texto y en enumeraciones.
+        \item \emph{fancyhdr}: Encabezados y pie de página personalizados.
+        \item \emph{babel[spanish]}: Tipografía y convenciones en español.
+        \item \emph{geometry}: Define márgenes y dimensiones de la página.
+    \item \emph{color[usenames]}: Permite usar colores predefinidos por nombre.
+    \item \emph{wrapfig}: Permite que el texto rodee figuras.
+    \item \emph{multirow}: Permite celdas de tabla que abarcan varias filas.
+    \item \emph{graphicx}: Permite incluir imágenes.
+    \item \emph{subfigure}: Permite incluir subfiguras dentro de una figura.
+    \item \emph{caption}: Personalización de leyendas de figuras y tablas.
+    \item \emph{hyperref}: Agrega hipervínculos y referencias clicables al documento.
+    \item \emph{esint}: Agrega símbolos de integral extendidos (de contorno, de superficie, etc.).
+    \item \emph{array}: Mejora los entornos de tabla.
+    \item \emph{tikz, tkz-euclide}: Permiten crear gráficos vectoriales y construcciones de geometría euclidiana.
+    \item \emph{pgfplots}: Permite crear gráficos de funciones y datos.
+    \item \emph{latexsym}: Agrega símbolos matemáticos adicionales (mayormente obsoleto).
+    \item \emph{xy[all]}: Permite crear diagramas conmutativos y otros gráficos con XY-pic.
+    \item \emph{enumitem}: Permite personalizar listas (\texttt{enumerate}, \texttt{itemize}).
+    \end{enumerate}
 \section{Modo Matemático}
     Para escribir una ecuación debemos indicarle al compilador de que entraremos en modo matemático, conocido como 
     \emph{math mode}. Hay varias maneras de hacerlo, pero todas tienen un propósito diferente.
@@ -451,7 +489,7 @@ y se compone de dos partes:
 
         Dejamos otros ejemplos, como referencia:
         \begin{itemize}
-            \item Con punto más largo
+            \item Con un subíndice más extenso:
     \begin{code}
         \( \lim\limits_{(x,y)\to (0,0)} F(x,y) \)
     \end{code}
@@ -469,8 +507,189 @@ y se compone de dos partes:
     \end{itemize}
 
     \subsection{Operadores diferenciales}
-    %% partial, laplace, etc !TODO
+    Tenemos tres símbolos a considerar, como:
+    \begin{itemize}
+        \item El operador \emph{partial}, \(\partial\). Un ejemplo de su uso 
+            es en la derivada parcial:
+            \begin{code}
+                Calcule las derivadas parciales \(\frac{\partial f}{\partial x}\)
+                y \(\frac{\partial f}{\partial y}\).
+            \end{code}
+            \begin{compiled}
+                Calcule las derivadas parciales \(\frac{\partial f}{\partial x}\) y \(\frac{\partial f}{\partial y}\).
+            \end{compiled}
+
+        \item El operador \emph{nabla}, \(\nabla\).
+        Un ejemplo de su uso es en gradiente o en el Laplaciano:
+            \begin{code}
+                El gradiente de \(f:\mathbb{R}^2\to \mathbb{R}\)
+                se define como:
+                    \[\nabla f(x,y) = \left( \frac{\partial f}{\partial x}(x,y), \frac{\partial f}{\partial y}(x,y) \right) \]
+            \end{code}
+            \begin{compiled}
+                El gradiente de \(f:\mathbb{R}^2\to \mathbb{R}\)
+                se define como:
+                    \[\nabla f(x,y) = \left( \frac{\partial f}{\partial x}(x,y), \frac{\partial f}{\partial y}(x,y) \right) \]
+            \end{compiled}
+            Si deseamos escribir el gradiente con flecha, lo hacemos con el acento que ya hemos visto anteriormente:
+            \begin{code}
+                Supongamos que \(\vec{\nabla} F = \vec{0}.\)
+            \end{code}
+            \begin{compiled}
+                Supongamos que \(\vec{\nabla} F = \vec{0}.\)
+            \end{compiled}
+
+        \item El operador \emph{Delta}, \(\Delta\). Se utiliza para el Laplaciano o para diferencias.
+            \begin{code}
+                El Laplaciano se define como
+                \[\Delta F(x,y,z) = \nabla F(x,y,z)\cdot nabla F(x,y,z).\]
+                y a veces se denota \(\Delta=\nabla ^2\).
+            \end{code}
+            \begin{compiled}
+                El Laplaciano se define como
+                \[\Delta F(x,y,z) = \nabla F(x,y,z)\cdot \nabla F(x,y,z).\]
+                y a veces se denota \(\Delta=\nabla ^2\).
+            \end{compiled}
+    \end{itemize}
+    Un ejemplo con un poco más de contexto:
+            \begin{code}
+                Tenemos que la derivada direccional de \(f\in \mathcal{C}^2\)
+                en \((x,y,z)\) en la dirección \(\vec{d}\) está dada por:
+                
+                \[D_{\vec{d}}f(x,y,z) = \nabla f(x,y,z)\cdot \vec{d}\]
+            \end{code}
+            \begin{compiled}
+                Tenemos que la derivada direccional de \(f\in \mathcal{C}^2\)
+                en \((x,y,z)\) en la dirección \(\vec{d}\) está dada por:
+                
+                \[D_{\vec{d}}f(x,y,z) = \nabla f(x,y,z)\cdot \vec{d}\]
+            \end{compiled}
     
+
+            \section{Paréntesis}
+            En esta sección veremos algo muy sencillo, pero extremadamente útil: Los paréntesis en el tamaño apropiado.
+            En las subsecciones que siguen podremos ejemplos aprovechando el contenido anterior.
+
+            Antes que todo, tenemos que comprender el valor estético que nos proporcionará.
+            Dejaremos a juicio del lector la diferencia visual:
+
+            \begin{tcbraster}[raster columns=2, raster equal height]
+                \begin{code}
+                    \[(\frac{dg}{dt}+t)=g\]
+                \end{code}
+                \begin{compiled}
+                    \[(\frac{dg}{dt}+t)=g\]
+                \end{compiled}
+            \end{tcbraster}
+
+            \begin{tcbraster}[raster columns=2, raster equal height]
+                \begin{code}
+                    \[\left(\frac{dg}{dt}+t\right)=g\]
+                \end{code}
+                \begin{compiled}
+                    \[\left(\frac{dg}{dt}+t\right)=g\]
+                \end{compiled}
+            \end{tcbraster}
+
+            Otro ejemplo:
+
+            \begin{tcbraster}[raster columns=2, raster equal height]
+                \begin{code}
+                    \[
+                    \int_2^4 (\int_0^x xy dx) dy
+                     \]
+                \end{code}
+                \begin{compiled}
+                    \[\int_2^4 (\int_0^x xy dx) dy \]
+                \end{compiled}
+            \end{tcbraster}
+
+            \begin{tcbraster}[raster columns=2, raster equal height]
+                \begin{code}
+                    \[
+                    \int_2^4 \left(\int_0^x xydx\right) dy
+                    \]
+                \end{code}
+                \begin{compiled}
+                    \[\int_2^4 \left(\int_0^x xy dx\right) dy \]
+                \end{compiled}
+            \end{tcbraster}
+
+            \subsection{Paréntesis redondos, cuadrados y llaves}
+            Para indicar que comienza el parentesis agregaremos el comando \emph{\textbackslash left} 
+            y tendremos que cerrar el parentesis con \emph{\textbackslash right}.
+
+
+            Consideremos los siguientes ejemplos:
+            \begin{itemize}
+                \item Paréntesis redondos
+            \begin{code}
+            \[ \left( \frac{1}{7} - \frac{2}{5}\right)\cdot \frac{2}{4} \]
+            \end{code}
+
+            \begin{compiled}
+            \[ \left( \frac{1}{7} - \frac{2}{5}\right)\cdot \frac{2}{4} \]
+            \end{compiled}
+            
+        \item Paréntesis cuadrados
+            \begin{code}
+                \[ 2\pi\left( \int_0^{1/\pi}
+                \left[ \int_0^2 rdr\right]d\theta\right) \]
+            \end{code}
+
+            \begin{compiled}
+                \[ 2\pi\left( \int_0^{1/\pi} \left[ \int_0^2 rdr\right]d\theta\right) \]
+            \end{compiled}
+
+        \item Parentesis de llaves
+            \begin{code}
+                Consideremos el conjunto siguiente:
+                    \[G = \left\lbrace f:[0,1]\to\mathbb{R} \mid
+                    \int_{-1}^1 f(x) < \infty \right\rbrace\]
+            \end{code}
+
+            \begin{compiled}
+                Consideremos el conjunto siguiente:
+                    \[G = \left\lbrace f:[0,1]\to\mathbb{R} \mid \int_{-1}^1 f(x) < \infty \right\rbrace\]
+            \end{compiled}
+        \end{itemize}
+
+
+            \subsection{Omisión de paréntesis}
+            Hay otros casos de uso, un poco menos usuales. 
+            Comenzaremos describiendo lo más complejo: omitir un paréntesis.
+
+
+            Como ya vimos, siempre debemos tener el paréntesis de la izquierda y el de la derecha, pero podríamos
+            querer omitir uno de ellos, como cuando evaluamos una función, lo cual se usa en la regla de Barrows en cálculo.
+
+
+            Seguiremos denotando el lado de la izquierda y de la derecha, pero en el lado que no queremos
+            que se muestre el paréntesis pondremos un punto.
+
+            \begin{code}
+                Si tenemos que \(F'(x)=f(x)\), entonces:
+                \[ \int_a^b f(x)dx = \left. F(x)\right\vert_a^b = F(b)-F(a). \]
+            \end{code}
+            \begin{compiled}
+                Si tenemos que \(F'(x)=f(x)\), entonces:
+                \[ \int_a^b f(x)dx = \left. F(x)\right\vert_a^b = F(b)-F(a). \]
+            \end{compiled}
+
+
+            \begin{code}
+            \[ \int_0^{\pi} \left(\frac{1}{x^2}+\cos(x)\right)dx 
+            = \left. \left( -\frac{1}{x}+\sen(x) \right)\right\vert_0^{\pi} \]
+            \end{code}
+            \begin{compiled}
+                \[ \int_0^{\pi} \left(\frac{1}{x^2}+\cos(x)\right)dx = \left. \left( -\frac{1}{x}+\sen(x) \right)\right\vert_0^{\pi} \]
+            \end{compiled}
+
+
+
+
+
+
     \chapter{Arreglos, Casos y Matrices}
 \section{Entornos cases y align}
 \subsection{cases}
