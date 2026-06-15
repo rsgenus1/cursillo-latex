@@ -1,4 +1,9 @@
 \documentclass[graybox,envcountchap,sectrefs]{svmono}
+\usepackage[
+    twoside,
+    inner=4cm,   % margen interior (hacia el lomo/encuadernación)
+    outer=3cm,   % margen exterior
+]{geometry}
 
 \usepackage[spanish]{babel}
 \usepackage[utf8]{inputenc}
@@ -10,6 +15,7 @@
 \tcbuselibrary{skins, minted, raster}
 \definecolor{latteBase}{HTML}{EFF1F5}
 \usepackage{hyperref}
+\usepackage{booktabs}
 
 \renewcommand{\exercisename}{Ejercicio}
 
@@ -34,8 +40,11 @@
     boxrule=0.5pt,
     left=5mm,
     title={\textcolor{blue!60}{\small Código compilado}}, % este color esta feo
-    fonttitle=\small
+    fonttitle=\small,
+    float
 }
+
+
 
 \begin{document}
 
@@ -700,7 +709,8 @@ Dentro del entorno, debemos decidir cuántas columnas consideraremos, lo usual e
 Una para la definición de la función y el otro para la condición que debe cumplir.
 Por ejemplo,
 \begin{code}
-    \[f(t) =    \begin{cases}
+    \[
+        f(t) =    \begin{cases}
                     t^3-t^2+4   & \text{si } t \geq 0 \\
                     2t+4        & \text{si } t < 0
                 \end{cases}
@@ -712,8 +722,7 @@ utilizando \textbackslash\textbackslash. Este código resulta en:
     \[f(t) =    \begin{cases}
                     t^3-t^2+4   & \text{si } t \geq 0 \\
                     2t+4        & \text{si } t < 0
-                \end{cases}
-    \]
+                \end{cases}\]
 \end{compiled}
 
 Es una buena práctica utilizar espacios y tabulaciones para tener un código legible y editable con facilidad.
@@ -740,6 +749,65 @@ Esto se ve como:
             \]
 \end{compiled}
 \subsection{align} % revisar si falta array TODO
+    Para tener ecuaciones alineadas utilizaremos el entorno \emph{align}.
+    Sigue un patrón similar a \emph{cases} para separar filas y columnas. Por ejemplo:
+    \begin{code}
+        Desarrollamos la ecuación siguiente:
+        \begin{align}
+            f(x)    & = 2x-2-x+3  \\
+                    & = x+1.
+        \end{align}
+    \end{code}
+    \begin{compiled}
+        Desarrollamos la ecuación siguiente:
+        \begin{align}
+            f(x)    & = 2x-2-x+3  \\
+                    & = x+1.
+        \end{align}
+    \end{compiled}
+
+    Si queremos que no haya enumeración de las ecuaciones, simplemente agregamos un asterisco al nombre del entorno:
+    \begin{code}
+        Desarrollamos la ecuación siguiente:
+        \begin{align*}
+            f(x)    & = 2x-2-x+3  \\
+                    & = x+1.
+        \end{align*}
+    \end{code}
+    \begin{compiled}
+        Desarrollamos la ecuación siguiente:
+        \begin{align*}
+            f(x)    & = 2x-2-x+3  \\
+                    & = x+1.
+        \end{align*}
+    \end{compiled}
+    Podemos también hacer varias lineas de ecuaciones y añadir texto en medio con \emph{intertext}.
+    Hay que poner cuidado con los cambios de línea:
+    \begin{code}
+        Desarrollamos la integral siguiente:
+        \begin{align*}
+            \int e^x\sen(x) dx  & = e^x \sen(x) - \int e^x \cos(x) dx \\
+                                & = e^x \sen(x) - \left( e^x \cos(x) + \int e^x \sen(x) dx\right) \\
+                                & = e^x \sen(x) - e^x \cos(x) - \int e^x \sen(x) dx
+            \intertext{despejamos \(\int e^x \sen(x) dx\) y queda:}
+            2\int e^x\sen(x) dx & = e^x \sen(x) - e^x \cos(x) \\
+            \int e^x\sen(x) dx & = \frac{e^x}{2} \sen(x) - \frac{e^x}{2} \cos(x)
+        \end{align*}
+    \end{code}
+    \begin{compiled}
+        Desarrollamos la integral siguiente:
+        \begin{align*}
+            \int e^x\sen(x) dx  & = e^x \sen(x) - \int e^x \cos(x) dx \\
+                                & = e^x \sen(x) - \left( e^x \cos(x) + \int e^x \sen(x) dx\right) \\
+                                & = e^x \sen(x) - e^x \cos(x) - \int e^x \sen(x) dx
+            \intertext{despejamos \(\int e^x \sen(x) dx\) y queda:}
+            2\int e^x\sen(x) dx & = e^x \sen(x) - e^x \cos(x) \\
+            \int e^x\sen(x) dx & = \frac{e^x}{2} \sen(x) - \frac{e^x}{2} \cos(x)
+        \end{align*}
+    \end{compiled}
+
+
+
 
 
 \section{Matrices}
@@ -850,10 +918,139 @@ Y para agregar la linea vertical requerida en matrices ampliadas, lo indicamos e
 \end{compiled}
 
 \section{Tablas}
+    % TODO! Revisar si esta seccion realmente vale la pena
+%
+Para hacer tablas, usaremos el paquete \emph{booktabs}.
+Nos proporcionará de lineas horizontables y una estructura estéticamente apropiada.
+
+
+Para insertar tablas usamos el entorno \emph{tabular}
+al cual debemos indicarle cuántas columnas vamos a considerar, y qué regla de alineado se usará.
+Para ello usaremos \textbf{l} si debe estar alineado a la izquierda, \textbf{c}
+si debe estar centralizado y usaremos \textbf{r} si debe estar alineado a la derecha.
+
+
+Al igual que en matrices, separamos las columnas con \&, y el cambio de una fila a otra
+con \textbackslash\textbackslash.
+\begin{code}
+\begin{table}[h]
+    \begin{tabular}{lcc}
+        \toprule
+        Método & Precisión & Tiempo (s) \\
+        \midrule
+        Modelo A & 0.92 & 1.3 \\
+        Modelo B & 0.95 & 2.1 \\
+        Modelo C & 0.89 & 0.8 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+\end{code}
+
+En este caso:
+    \begin{itemize}
+        \item \textbf{h} indica que debe ponerse la tabla en el lugar el código,
+            \emph{h} se refiere a \emph{here}, \emph{aquí} en inglés.
+        \item \textbf{lcc} nos dice que hay 3 columnas, de izquierda a derecha: La primera alineada a la izquierda y las otras dos centralizadas.
+        \item \emph{\textbackslash toprule} indica que pondremos una linea horizontal al principio, arriba.
+        \item \emph{\textbackslash midrule} indica que pondremos una linea horizontal en medio.
+        \item \emph{\textbackslash bottomrule} indica que pondremos una linea horizontal en la parte de abajo. 
+    \end{itemize}
+    Como resultado, esta tabla queda:
+\begin{compiled}
+    \begin{tabular}{lcc}
+        \toprule
+        Método & Precisión & Tiempo (s) \\
+        \midrule
+        Modelo A & 0.92 & 1.3 \\
+        Modelo B & 0.95 & 2.1 \\
+        Modelo C & 0.89 & 0.8 \\
+        \bottomrule
+    \end{tabular}
+\end{compiled}
+
+Si queremos la tabla centrada la encerramos en un entorno \emph{center}
+
+\begin{code}
+    La tabla de verdad resulta de la siguiente manera:
+    \begin{center}
+        \begin{tabular}{ccc}
+            \toprule
+            \(P\) & \(Q\) & \(P\vee Q\) \\
+            \midrule
+            V & V & V       \\
+            F & V & V       \\
+            V & F & V       \\
+            F & F & F       \\
+            \bottomrule
+        \end{tabular}
+    \end{center}
+\end{code}
+\begin{compiled}
+    La tabla de verdad resulta de la siguiente manera:
+    \begin{center}
+        \begin{tabular}{ccc}
+            \toprule
+            \(P\) & \(Q\) & \(P\vee Q\) \\
+            \midrule
+            V & V & V       \\
+            F & V & V       \\
+            V & F & V       \\
+            F & F & F       \\
+            \bottomrule
+        \end{tabular}
+    \end{center}
+\end{compiled}
+
+
+
 
 \chapter{Listas y Gráficos}
 \section{Itemize}
-\section{Enumerate}
+    Para hacer una lista de ítems, usamos el entorno \emph{itemize}:
+    \begin{code}
+        Encuentre los enteros \(n\) tales:
+        \begin{itemize}
+            \item \(n\) es divisible por 3.
+            \item \(n-1\) es divisible por 4.
+        \end{itemize}
+    \end{code}
+    \begin{compiled}
+        Encuentre los enteros \(n\) tales:
+        \begin{itemize}
+            \item \(n\) es divisible por 3.
+            \item \(n-1\) es divisible por 4.
+        \end{itemize}
+    \end{compiled}
+\section{Enumerate} %!TODO
+    Si queremos que en una lista de ítems, se puedan enumerar automáticamente usamos el entorno
+    \emph{enumerate}.
+    \begin{code}
+    \end{code}
+    \begin{compiled}
+    \end{compiled}
+
+    \begin{code}
+    \end{code}
+    \begin{compiled}
+    \end{compiled}
+
+    Si deseamos mayor control sobre la manera en que se enumeran los ítems, 
+    usaremos un paquete adicional llamado \emph{enumitem}.
+
+    Por ejemplo, si queremos letras con un paréntesis al final:
+    \begin{code}
+    \end{code}
+    \begin{compiled}
+        \begin{enumerate}[label=\alph*)]
+            \item 
+        \end{enumerate}
+    \end{compiled}
+
+
+    \begin{code}
+    \end{code}
+    \begin{compiled}
+    \end{compiled}
 \section{includegraphics}
 
 %agrega de bibliografia la documentacion de:
