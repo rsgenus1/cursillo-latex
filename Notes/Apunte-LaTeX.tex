@@ -1,8 +1,8 @@
 \documentclass[graybox,envcountchap,sectrefs]{svmono}
 \usepackage[
     twoside,
-    inner=4cm,   % margen interior (hacia el lomo/encuadernación)
-    outer=3cm,   % margen exterior
+    inner=3.25cm,   % margen interior (hacia el lomo/encuadernación)
+    outer=2.5cm,   % margen exterior
 ]{geometry}
 
 \usepackage[spanish]{babel}
@@ -114,7 +114,8 @@ y se compone de dos partes:
     Para escribir una ecuación debemos indicarle al compilador de que entraremos en modo matemático, conocido como 
     \emph{math mode}. Hay varias maneras de hacerlo, pero todas tienen un propósito diferente.
     \subsection{Display Math Mode}
-    Si queremos una ecuación centrada en el texto encerraremos el código matemático entre \verb|\[| {\color{red} código }\verb|\]| así como se muestra en el siguiente ejemplo:
+    Si queremos una ecuación centrada en el texto encerraremos el código matemático entre \\
+    \verb|\[|{\color{red}código}\verb|\]|~así como se muestra en el siguiente ejemplo:
         \begin{code}
             \[ x + 12 = 10 \]
         \end{code}
@@ -1021,17 +1022,43 @@ Si queremos la tabla centrada la encerramos en un entorno \emph{center}
             \item \(n-1\) es divisible por 4.
         \end{itemize}
     \end{compiled}
-\section{Enumerate} %!TODO
+\section{Enumerate}
     Si queremos que en una lista de ítems, se puedan enumerar automáticamente usamos el entorno
     \emph{enumerate}.
     \begin{code}
+        \begin{enumerate}
+            \item Primer ítem.
+            \item Segundo ítem.
+        \end{enumerate}
     \end{code}
     \begin{compiled}
+        \begin{enumerate}
+            \item Primer ítem.
+            \item Segundo ítem.
+        \end{enumerate}
     \end{compiled}
-
+    Si anidamos uno dentro de otro, automáticamente cambiará las etiquetas como sigue:
     \begin{code}
+        \begin{enumerate}
+            \item Primer ítem.
+                \begin{enumerate}
+                    \item Primer subítem.
+                    \item Segundo subítem.
+                    \item Tercer subítem.
+                \end{enumerate}
+            \item Segundo ítem.
+        \end{enumerate}
     \end{code}
     \begin{compiled}
+        \begin{enumerate}
+            \item Primer ítem.
+                \begin{enumerate}
+                    \item Primer subítem.
+                    \item Segundo subítem.
+                    \item Tercer subítem.
+                \end{enumerate}
+            \item Segundo ítem.
+        \end{enumerate}
     \end{compiled}
 
     Si deseamos mayor control sobre la manera en que se enumeran los ítems, 
@@ -1039,17 +1066,72 @@ Si queremos la tabla centrada la encerramos en un entorno \emph{center}
 
     Por ejemplo, si queremos letras con un paréntesis al final:
     \begin{code}
+        \begin{enumerate}[label=\alph*)]
+            \item Primer ítem con letras minúsculas.
+                \begin{enumerate}[label=\Roman*.]
+                    \item Primer subítem con letras romanas mayúsculas.
+                    \item Segundo subítem con letras romanas mayúsculas.
+                \end{enumerate}
+            \item Segundo ítem con letras minúsculas.
+        \end{enumerate}
     \end{code}
     \begin{compiled}
         \begin{enumerate}[label=\alph*)]
-            \item 
+            \item Primer ítem con letras minúsculas.
+                \begin{enumerate}[label=\Roman*.]
+                    \item Primer subítem con letras romanas mayúsculas.
+                    \item Segundo subítem con letras romanas mayúsculas.
+                \end{enumerate}
+            \item Segundo ítem con letras minúsculas.
         \end{enumerate}
     \end{compiled}
 
+    Tenemos 5 opciones disponibles:
+     \begin{table}[h]
+         \centering
+         \begin{tabular}{lcc}
+             \toprule 
+             label      & característica        & muestra \\
+             \midrule
+             arabic     & números arábicos      & 1, 2, 3, 4 \\
+             roman      & romanos en minúsculas & i, ii, iii, iv \\
+             Roman      & romanos en mayúsculas & I, II, III, IV \\
+             alph       & letras del alfabeto en minúsculas & a, b, c, d \\
+             Alph       & letras del alfabeto en mayúsculas & A, B, C, D \\
+             \bottomrule
+        \end{tabular}
+    \end{table}
 
+    Para finalizar, veamos un ejemplo más:
     \begin{code}
+        \begin{enumerate}[label=\Roman*.]
+            \item Integración por sustitución simple 
+                \begin{enumerate}[label=\arabic*.-]
+                    \item Calcule las integrales con la sustitución \(u=1-x\):
+                        \begin{enumerate}[label=\alph*)]
+                            \item \(\int (1-x)^2 dx\)
+                            \item \(\int \cos(1-x)dx\)
+                        \end{enumerate}
+                    \item Calcule:
+                        \[\int \frac{x}{x^2+1}dx\]
+                \end{enumerate}
+            \item Integración por partes
+        \end{enumerate}
     \end{code}
     \begin{compiled}
+        \begin{enumerate}[label=\Roman*.]
+            \item Integración por sustitución simple 
+                \begin{enumerate}[label=\arabic*.-]
+                    \item Calcule las integrales con la sustitución \(u=1-x\):
+                        \begin{enumerate}[label=\alph*)]
+                            \item \(\int (1-x)^2 dx\)
+                            \item \(\int \cos(1-x)dx\)
+                        \end{enumerate}
+                    \item Calcule:
+                        \[\int \frac{x}{x^2+1}dx\]
+                \end{enumerate}
+            \item Integración por partes
+        \end{enumerate}
     \end{compiled}
 \section{includegraphics}
 
