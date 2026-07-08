@@ -5,16 +5,12 @@
 
 \documentclass[10pt,letter]{amsart}
 \usepackage[utf8]{inputenc} % tildes
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amsthm}
-\usepackage{amssymb}
+\usepackage{amsmath, amsfonts, amssymb, amsthm}
 \usepackage{mathtools}
 \usepackage{float}
 \usepackage{multicol}
 \usepackage{fancyhdr} % Encabezados y pie de página
 \usepackage[spanish]{babel}
-\usepackage{listings} % comandos MATLAB O C
 \usepackage{multirow}
 \usepackage[left=2cm,right=2cm,top=4.5cm,bottom=2.5cm, headsep=3cm]{geometry}
 \usepackage[usenames]{color}
@@ -23,7 +19,6 @@
 \usepackage{graphicx}
 \usepackage{subfigure} % subfiguras
 \usepackage{epstopdf} % archivos eps
-\usepackage{lipsum}
 \usepackage{caption}
 \usepackage{hyperref}
 \usepackage{esint}
@@ -32,7 +27,6 @@
 \pgfplotsset{compat=newest}
 \usetikzlibrary[calc,arrows,decorations.pathmorphing,backgrounds,positioning,fit,petri,shapes,mindmap,shadows]
 \usepackage{latexsym}
-\usepackage[all]{xy}
 \usepackage{enumitem}
 
 \usepackage{pgfplots}
@@ -91,8 +85,6 @@ coltitle=black,center title}}
         right=5mm,
         title=Pregunta \thequestion \hfill \color{blackUA}#1]% Espacio a la derecha]
     #2
-    
-    
     \end{tcolorbox}
 }
 \newcounter{exercise}

@@ -1,9 +1,9 @@
 \documentclass[graybox,envcountchap,sectrefs]{svmono}
-\usepackage[
-    twoside,
-    inner=3.25cm,   % margen interior (hacia el lomo/encuadernación)
-    outer=2.5cm,   % margen exterior
-]{geometry}
+%\usepackage[
+%    twoside,
+%    inner=3cm,   % margen interior (hacia el lomo/encuadernación)
+%    outer=2.25cm,   % margen exterior
+%]{geometry}
 
 \usepackage[spanish]{babel}
 \usepackage[utf8]{inputenc}
@@ -16,6 +16,8 @@
 \definecolor{latteBase}{HTML}{EFF1F5}
 \usepackage{hyperref}
 \usepackage{booktabs}
+
+\usepackage{float} 
 
 \renewcommand{\exercisename}{Ejercicio}
 
@@ -40,8 +42,7 @@
     boxrule=0.5pt,
     left=5mm,
     title={\textcolor{blue!60}{\small Código compilado}}, % este color esta feo
-    fonttitle=\small,
-    float
+    fonttitle=\small
 }
 
 
@@ -54,6 +55,21 @@
 \maketitle
 \tableofcontents
 \chapter*{Introducción}
+Este curso rápido de \LaTeX está diseñado para quienes necesitan \textbf{editar y modificar documentos existentes} más que crearlos desde cero.
+
+El enfoque principal es:
+\begin{itemize}
+    \item Comprender la estructura básica de un documento \LaTeX.
+    \item Aprender a escribir ecuaciones matemáticas correctamente.
+    \item Usar los entornos y comandos más comunes en documentos científicos.
+    \item Poder modificar y adaptar plantillas existentes.
+\end{itemize}
+
+En la práctica docente y de investigación, es más frecuente \emph{editar} documentos ya creados (artículos, informes, presentaciones) que comenzar desde cero. Este tutorial entrega las herramientas mínimas para entender y modificar cualquier documento \LaTeX.
+
+El tutorial está organizado en capítulos que van desde lo más fundamental hasta temas más específicos. Cada concepto se presenta con ejemplos de código y su resultado compilado, para que puedas ver inmediatamente el efecto de cada comando.
+
+¡Comencemos!
 
 \chapter{Fundamentos y Estructura}
 \section{Instalación y Editor}
@@ -1134,7 +1150,55 @@ Si queremos la tabla centrada la encerramos en un entorno \emph{center}
         \end{enumerate}
     \end{compiled}
 \section{includegraphics}
+Para añadir gráficos externos podemos hacerlos con \emph{includegraphics}.
+Los formatos compatibles son: \emph{pdf, png, jpg/jpeg}.
+\begin{code}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.6]{grafico_ejemplo/grafico1.pdf}
+\end{figure}
+\end{code}
 
+
+\begin{compiled}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.6]{grafico_ejemplo/grafico1.pdf}
+\end{figure}
+\end{compiled}
+
+En el ejemplo anterior, tenemos que indicar el nombre del archivo, o bien la ubicación del mismo.
+\subsection{Opciones útiles}
+\begin{itemize}
+    \item \texttt{scale=0.5}: Escala proporcional.
+    \item \texttt{width=5cm}: Ancho fijo.
+    \item \texttt{angle=45}: Rotación.
+\end{itemize}
+
+\subsection{Leyenda y referencia}
+\begin{code}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.6]{grafico_ejemplo/grafico1.pdf}
+    \caption{Gráfico de ejemplo}
+    \label{fig:ejemplo}
+\end{figure}
+\end{code}
+
+\begin{compiled}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.6]{grafico_ejemplo/grafico1.pdf}
+    \caption{Gráfico de ejemplo}
+    \label{fig:ejemplo}
+\end{figure}
+\end{compiled}
+
+Para referenciar: \verb|\ref{fig:ejemplo}|.
+
+\begin{exercise}
+Incluya una imagen con su respectiva leyenda y referencíela en el texto.
+\end{exercise}
 %agrega de bibliografia la documentacion de:
 % tikz, latex, y de la libreria de tikz con la que se hacen los graficos
 % % ojo que puede que necesite de --shell-scape para este ultimo capitulo. 
